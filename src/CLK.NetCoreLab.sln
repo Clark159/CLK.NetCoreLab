@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostedServiceLab", "HostedServiceLab\HostedServiceLab.csproj", "{B5BE33EE-9256-48E1-90DE-0CE34CC0C67B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HostedServiceLab", "HostedServiceLab\HostedServiceLab.csproj", "{B5BE33EE-9256-48E1-90DE-0CE34CC0C67B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleServiceLab", "ConsoleServiceLab\ConsoleServiceLab.csproj", "{E30F6DAB-CEA6-4810-AB6E-ADB8A0A842B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{B5BE33EE-9256-48E1-90DE-0CE34CC0C67B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5BE33EE-9256-48E1-90DE-0CE34CC0C67B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B5BE33EE-9256-48E1-90DE-0CE34CC0C67B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E30F6DAB-CEA6-4810-AB6E-ADB8A0A842B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E30F6DAB-CEA6-4810-AB6E-ADB8A0A842B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E30F6DAB-CEA6-4810-AB6E-ADB8A0A842B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E30F6DAB-CEA6-4810-AB6E-ADB8A0A842B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
