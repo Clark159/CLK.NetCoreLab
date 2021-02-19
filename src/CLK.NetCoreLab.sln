@@ -5,7 +5,11 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HostedServiceLab", "HostedServiceLab\HostedServiceLab.csproj", "{B5BE33EE-9256-48E1-90DE-0CE34CC0C67B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleServiceLab", "ConsoleServiceLab\ConsoleServiceLab.csproj", "{E30F6DAB-CEA6-4810-AB6E-ADB8A0A842B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleServiceLab", "ConsoleServiceLab\ConsoleServiceLab.csproj", "{E30F6DAB-CEA6-4810-AB6E-ADB8A0A842B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObserverLab", "ObserverLab\ObserverLab.csproj", "{DCB3AB03-65E2-4DFC-8CEF-6B184BE78E68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiagnosticSourceLab", "DiagnosticSourceLab\DiagnosticSourceLab.csproj", "{E8D1C4A0-D004-4DD7-BC96-E9E06DD34EEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{E30F6DAB-CEA6-4810-AB6E-ADB8A0A842B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E30F6DAB-CEA6-4810-AB6E-ADB8A0A842B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E30F6DAB-CEA6-4810-AB6E-ADB8A0A842B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCB3AB03-65E2-4DFC-8CEF-6B184BE78E68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCB3AB03-65E2-4DFC-8CEF-6B184BE78E68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCB3AB03-65E2-4DFC-8CEF-6B184BE78E68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCB3AB03-65E2-4DFC-8CEF-6B184BE78E68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8D1C4A0-D004-4DD7-BC96-E9E06DD34EEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8D1C4A0-D004-4DD7-BC96-E9E06DD34EEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8D1C4A0-D004-4DD7-BC96-E9E06DD34EEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8D1C4A0-D004-4DD7-BC96-E9E06DD34EEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
