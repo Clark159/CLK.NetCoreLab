@@ -21,16 +21,16 @@ namespace ActivitySourceLab
 
             // Diagnostic
             {
-                // Print
-                using (var activity001 = _activitySource001.StartActivity("Print"))
+                // Pay
+                using (var activity001 = _activitySource001.StartActivity("Pay"))
                 {
-                    // Print.SetTag
+                    // Pay.SetTag
                     activity001?.SetTag("User", "Clark");
 
-                    // Pay
-                    using (var activity002 = _activitySource002.StartActivity("Pay"))
+                    // Print
+                    using (var activity002 = _activitySource002.StartActivity("Print"))
                     {
-                           // Pay.SetTag
+                           // Print.SetTag
                            activity002?.SetTag("User", "Jane");
                     }
                 }

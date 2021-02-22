@@ -18,15 +18,15 @@ namespace DiagnosticSourceLab
 
             // Diagnostic
             {
-                // Print
-                var activityName01 = "Print";
+                // Pay
+                var activityName01 = "Pay";
                 if (_diagnosticSource.IsEnabled(activityName01) == true)
                 {
                     _diagnosticSource.Write(activityName01, new { User = "Clark" });
                 }
 
-                // Pay
-                var activityName02 = "Pay";
+                // Print
+                var activityName02 = "Print";
                 if (_diagnosticSource.IsEnabled(activityName02) == true)
                 {
                     _diagnosticSource.Write(activityName02, new { User = "Jane" });
@@ -85,7 +85,7 @@ namespace DiagnosticSourceLab
             public void OnNext(KeyValuePair<string, object> diagnostic)
             {
                 // Display
-                Console.WriteLine($"Activity: Name={diagnostic.Key}, Payload={diagnostic.Value}");
+                Console.WriteLine($"Activity: Name={diagnostic.Key}, Printload={diagnostic.Value}");
             }
 
             public void OnCompleted() { }
