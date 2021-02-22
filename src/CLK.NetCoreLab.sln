@@ -7,9 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HostedServiceLab", "HostedS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleServiceLab", "ConsoleServiceLab\ConsoleServiceLab.csproj", "{E30F6DAB-CEA6-4810-AB6E-ADB8A0A842B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObserverLab", "ObserverLab\ObserverLab.csproj", "{DCB3AB03-65E2-4DFC-8CEF-6B184BE78E68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ObserverLab", "ObserverLab\ObserverLab.csproj", "{DCB3AB03-65E2-4DFC-8CEF-6B184BE78E68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiagnosticSourceLab", "DiagnosticSourceLab\DiagnosticSourceLab.csproj", "{E8D1C4A0-D004-4DD7-BC96-E9E06DD34EEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiagnosticSourceLab", "DiagnosticSourceLab\DiagnosticSourceLab.csproj", "{E8D1C4A0-D004-4DD7-BC96-E9E06DD34EEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTelemetryLab", "OpenTelemetryLab\OpenTelemetryLab.csproj", "{206765B6-9307-4708-B0FA-6EF9BF57AF6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActivitySourceLab", "ActivitySourceLab\ActivitySourceLab.csproj", "{987F3083-E4A9-468C-B4BA-0B3F230A98AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{E8D1C4A0-D004-4DD7-BC96-E9E06DD34EEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8D1C4A0-D004-4DD7-BC96-E9E06DD34EEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8D1C4A0-D004-4DD7-BC96-E9E06DD34EEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{206765B6-9307-4708-B0FA-6EF9BF57AF6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{206765B6-9307-4708-B0FA-6EF9BF57AF6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{206765B6-9307-4708-B0FA-6EF9BF57AF6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{206765B6-9307-4708-B0FA-6EF9BF57AF6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{987F3083-E4A9-468C-B4BA-0B3F230A98AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{987F3083-E4A9-468C-B4BA-0B3F230A98AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{987F3083-E4A9-468C-B4BA-0B3F230A98AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{987F3083-E4A9-468C-B4BA-0B3F230A98AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

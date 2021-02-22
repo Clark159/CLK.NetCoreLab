@@ -105,7 +105,7 @@ namespace ObserverLab
             }
 
             // Return
-            return new Unsubscriber(() => this.Unsubscribe(observer));
+            return new Subscription(() => this.Unsubscribe(observer));
         }
 
         private void Unsubscribe(IObserver<T> observer)
@@ -135,14 +135,14 @@ namespace ObserverLab
 
 
         // Class
-        private class Unsubscriber : IDisposable
+        private class Subscription : IDisposable
         {
             // Fields
             private readonly Action _removeAction = null;
 
 
             // Constructors
-            public Unsubscriber(Action removeAction)
+            public Subscription(Action removeAction)
             {
                 #region Contracts
 
