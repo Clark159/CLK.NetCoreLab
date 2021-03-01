@@ -37,8 +37,7 @@ namespace TraceContextLab
                         builder.SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("CLK-TraceContextLab-MainService"));
 
                         // Source
-                        builder.AddSource("CLK.TraceContextLab.Test001");
-                        builder.AddSource("CLK.TraceContextLab.Test002");
+                        builder.AddSource("CLK.TraceContextLab.MainModule");
 
                         // Exporter
                         builder.AddConsoleExporter();
@@ -48,25 +47,23 @@ namespace TraceContextLab
                         });
                     });
 
-                    // ClarkApp
-                    services.AddHostedService<ClarkApp>();
+                    // ConsoleService
+                    services.AddHostedService<ConsoleService>();
                 })
             ;
         }
     }
 
-    public class ClarkApp : BackgroundService
+    public class ConsoleService : BackgroundService
     {
         // Fields
-        private static ActivitySource _activitySource001 = new ActivitySource("CLK.TraceContextLab.Test001");
-
-        private static ActivitySource _activitySource002 = new ActivitySource("CLK.TraceContextLab.Test002");
+        private static ActivitySource _activitySource = new ActivitySource("CLK.TraceContextLab.MainModule");
 
         private readonly IHttpClientFactory _httpClientFactory = null;
 
 
         // Constructors
-        public ClarkApp(IHttpClientFactory httpClientFactory)
+        public ConsoleService(IHttpClientFactory httpClientFactory)
         {
             #region Contracts
 
@@ -85,18 +82,18 @@ namespace TraceContextLab
             return Task.Run(() => {
 
                 // Pay
-                using (var activity001 = _activitySource002.StartActivity("Pay"))
+                using (var payActivity = _activitySource.StartActivity("Pay"))
                 {
                     // Execute
                     Thread.Sleep(1000);
-                    activity001?.SetTag("User", "Clark");
+                    payActivity?.SetTag("User", "Clark");
 
                     // Print
-                    using (var activity002 = _activitySource002.StartActivity("Print"))
+                    using (var printActivity = _activitySource.StartActivity("Print", ActivityKind.Client))
                     {
                         // Execute
-                        this.CallRemoteService("http://localhost:16686/");
-                        activity002?.SetTag("User", "Jane");                        
+                        this.CallSubService("http://localhost:8080/");
+                        printActivity?.SetTag("User", "Jane");                        
                     }
 
                     // Sleep
@@ -105,7 +102,7 @@ namespace TraceContextLab
             });
         }
 
-        private void CallRemoteService(string requestUri)
+        private void CallSubService(string requestUri)
         {
             #region Contracts
 
@@ -113,7 +110,7 @@ namespace TraceContextLab
 
             #endregion
 
-            // RemoteService
+            // SubService
             using (var httpClient = _httpClientFactory.CreateClient())
             {
                 // RequestContent

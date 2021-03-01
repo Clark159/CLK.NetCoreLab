@@ -32,14 +32,14 @@ namespace HostedServiceLab
         }
     }
 
-    public class ClarkApp : IHostedService
+    public class ConsoleService : IHostedService
     {
         // Fields
-        private readonly ILogger<ClarkApp> _logger = null;
+        private readonly ILogger<ConsoleService> _logger = null;
 
 
         // Constructors
-        public ClarkApp(ILogger<ClarkApp> logger)
+        public ConsoleService(ILogger<ConsoleService> logger)
         {
             #region Contracts
 
@@ -56,7 +56,7 @@ namespace HostedServiceLab
         public Task StartAsync(CancellationToken cancellationToken)
         {
             // Notify
-            Console.WriteLine("ClarkApp:StartAsync");
+            Console.WriteLine("ConsoleService:StartAsync");
 
             // Return
             return Task.CompletedTask;
@@ -65,7 +65,7 @@ namespace HostedServiceLab
         public Task StopAsync(CancellationToken cancellationToken)
         {
             // Notify
-            Console.WriteLine("ClarkApp:StopAsync");
+            Console.WriteLine("ConsoleService:StopAsync");
 
             // Return
             return Task.CompletedTask;

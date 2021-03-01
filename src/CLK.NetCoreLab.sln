@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenTelemetryLab", "OpenTel
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActivitySourceLab", "ActivitySourceLab\ActivitySourceLab.csproj", "{987F3083-E4A9-468C-B4BA-0B3F230A98AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TraceContextLab", "TraceContextLab\TraceContextLab.csproj", "{EB958D50-6DE1-45E3-84CD-549887DC8FA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TraceContextLab", "TraceContextLab\TraceContextLab.csproj", "{EB958D50-6DE1-45E3-84CD-549887DC8FA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TraceContextLab.SubService", "TraceContextLab.SubService\TraceContextLab.SubService.csproj", "{75444640-D8AB-4FA2-8B36-088245971DE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{EB958D50-6DE1-45E3-84CD-549887DC8FA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB958D50-6DE1-45E3-84CD-549887DC8FA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB958D50-6DE1-45E3-84CD-549887DC8FA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75444640-D8AB-4FA2-8B36-088245971DE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75444640-D8AB-4FA2-8B36-088245971DE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75444640-D8AB-4FA2-8B36-088245971DE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75444640-D8AB-4FA2-8B36-088245971DE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

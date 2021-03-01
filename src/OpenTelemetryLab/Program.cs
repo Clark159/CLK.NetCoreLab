@@ -32,8 +32,7 @@ namespace OpenTelemetryLab
                         builder.SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("CLK-OpenTelemetryLab-Service"));
                         
                         // Source
-                        builder.AddSource("CLK.OpenTelemetryLab.Test001");
-                        builder.AddSource("CLK.OpenTelemetryLab.Test002");
+                        builder.AddSource("CLK.OpenTelemetryLab.MainModule");
 
                         // Exporter
                         builder.AddConsoleExporter();
@@ -43,19 +42,17 @@ namespace OpenTelemetryLab
                         });
                     });
 
-                    // ClarkApp
-                    services.AddHostedService<ClarkApp>();
+                    // ConsoleService
+                    services.AddHostedService<ConsoleService>();
                 })
             ;
         }
     }
 
-    public class ClarkApp : BackgroundService
+    public class ConsoleService : BackgroundService
     {
         // Fields
-        private static ActivitySource _activitySource001 = new ActivitySource("CLK.OpenTelemetryLab.Test001");
-
-        private static ActivitySource _activitySource002 = new ActivitySource("CLK.OpenTelemetryLab.Test002");
+        private static ActivitySource _activitySource = new ActivitySource("CLK.OpenTelemetryLab.MainModule");
 
 
         // Methods
@@ -64,18 +61,18 @@ namespace OpenTelemetryLab
            return Task.Run(() =>{
 
                // Pay
-               using (var activity001 = _activitySource002.StartActivity("Pay"))
+               using (var payActivity = _activitySource.StartActivity("Pay"))
                {
                    // Execute
                    Thread.Sleep(1000);
-                   activity001?.SetTag("User", "Clark");
+                   payActivity?.SetTag("User", "Clark");
 
                    // Print
-                   using (var activity002 = _activitySource002.StartActivity("Print"))
+                   using (var printActivity = _activitySource.StartActivity("Print"))
                    {
                        // Execute
                        Thread.Sleep(1000);
-                       activity002?.SetTag("User", "Jane");
+                       printActivity?.SetTag("User", "Jane");
                    }
 
                    // Sleep

@@ -7,31 +7,28 @@ namespace ActivitySourceLab
     public class Program
     {
         // Fields
-        private static ActivitySource _activitySource001 = new ActivitySource("CLK.ActivitySourceLab.Test001");
-
-        private static ActivitySource _activitySource002 = new ActivitySource("CLK.ActivitySourceLab.Test002");
+        private static ActivitySource _activitySource = new ActivitySource("CLK.ActivitySourceLab.MainModule");
 
 
         // Methods
         public static void Main(string[] args)
         {
             // Subscribe
-            ActivitySource.AddActivityListener(new ActivitySourceSubscriber("CLK.ActivitySourceLab.Test001").ActivityListener);
-            ActivitySource.AddActivityListener(new ActivitySourceSubscriber("CLK.ActivitySourceLab.Test002").ActivityListener);
-
+            ActivitySource.AddActivityListener(new ActivitySourceSubscriber("CLK.ActivitySourceLab.MainModule").ActivityListener);
+            
             // Diagnostic
             {
                 // Pay
-                using (var activity001 = _activitySource001.StartActivity("Pay"))
+                using (var payActivity = _activitySource.StartActivity("Pay"))
                 {
                     // Pay.SetTag
-                    activity001?.SetTag("User", "Clark");
+                    payActivity?.SetTag("User", "Clark");
 
                     // Print
-                    using (var activity002 = _activitySource002.StartActivity("Print"))
+                    using (var printActivity = _activitySource.StartActivity("Print"))
                     {
-                           // Print.SetTag
-                           activity002?.SetTag("User", "Jane");
+                        // Print.SetTag
+                        printActivity?.SetTag("User", "Jane");
                     }
                 }
             }
