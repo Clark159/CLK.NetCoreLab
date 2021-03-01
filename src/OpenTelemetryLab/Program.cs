@@ -6,6 +6,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using OpenTelemetry;
 using OpenTelemetry.Trace;
+using OpenTelemetry.Exporter;
+using OpenTelemetry.Resources;
 
 namespace OpenTelemetryLab
 {
@@ -26,12 +28,19 @@ namespace OpenTelemetryLab
                     // OpenTelemetry
                     services.AddOpenTelemetryTracing((builder) =>
                     {
+                        // Resource
+                        builder.SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("CLK-OpenTelemetryLab-Service"));
+                        
                         // Source
-                        builder.AddSource("CLK.ActivitySourceLab.Test001");
-                        builder.AddSource("CLK.ActivitySourceLab.Test002");
+                        builder.AddSource("CLK.OpenTelemetryLab.Test001");
+                        builder.AddSource("CLK.OpenTelemetryLab.Test002");
 
                         // Exporter
                         builder.AddConsoleExporter();
+                        builder.AddJaegerExporter(options =>
+                        {
+                            options.AgentHost = "localhost";
+                        });
                     });
 
                     // ClarkApp
@@ -44,33 +53,36 @@ namespace OpenTelemetryLab
     public class ClarkApp : BackgroundService
     {
         // Fields
-        private static ActivitySource _activitySource001 = new ActivitySource("CLK.ActivitySourceLab.Test001");
+        private static ActivitySource _activitySource001 = new ActivitySource("CLK.OpenTelemetryLab.Test001");
 
-        private static ActivitySource _activitySource002 = new ActivitySource("CLK.ActivitySourceLab.Test002");
+        private static ActivitySource _activitySource002 = new ActivitySource("CLK.OpenTelemetryLab.Test002");
 
 
         // Methods
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            // Diagnostic
-            {
-                // Pay
-                using (var activity001 = _activitySource002.StartActivity("Pay"))
-                {
-                    // Pay.SetTag
-                    activity001?.SetTag("User", "Clark");
+           return Task.Run(() =>{
 
-                    // Print
-                    using (var activity002 = _activitySource002.StartActivity("Print"))
-                    {
-                        // Print.SetTag
-                        activity002?.SetTag("User", "Jane");
-                    }
-                }
-            }
+               // Pay
+               using (var activity001 = _activitySource002.StartActivity("Pay"))
+               {
+                   // Execute
+                   Thread.Sleep(1000);
+                   activity001?.SetTag("User", "Clark");
 
-            // Return
-            return Task.CompletedTask;
+                   // Print
+                   using (var activity002 = _activitySource002.StartActivity("Print"))
+                   {
+                       // Execute
+                       Thread.Sleep(1000);
+                       activity002?.SetTag("User", "Jane");
+                   }
+
+                   // Sleep
+                   Thread.Sleep(1000);
+               }
+
+           });
         }
     }
 }
