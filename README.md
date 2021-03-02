@@ -1,7 +1,7 @@
 # CLK.NetCoreLab
 
 
-##[.NET Core] OpenTelemetry程式範例
+## [.NET Core] OpenTelemetry程式範例
 
 在分散式微服務環境中，可以使用OpenTelemetry來進行分散式的鏈路追蹤。先釋出範例程式，後續再補齊教學文章，有興趣的讀者可以先依序學習。
 
