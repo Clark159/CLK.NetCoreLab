@@ -19,13 +19,13 @@ namespace ActivitySourceLab
             // Diagnostic
             {
                 // Pay
-                using (var payActivity = _activitySource.StartActivity("Pay"))
+                using (var payActivity = _activitySource.StartActivity("Pay", ActivityKind.Internal))
                 {
                     // Pay.SetTag
                     payActivity?.SetTag("User", "Clark");
 
                     // Print
-                    using (var printActivity = _activitySource.StartActivity("Print"))
+                    using (var printActivity = _activitySource.StartActivity("Print", ActivityKind.Internal))
                     {
                         // Print.SetTag
                         printActivity?.SetTag("User", "Jane");

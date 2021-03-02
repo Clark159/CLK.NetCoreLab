@@ -39,6 +39,9 @@ namespace TraceContextLab
                         // Source
                         builder.AddSource("CLK.TraceContextLab.MainModule");
 
+                        // Instrumentation
+                        //builder.AddHttpClientInstrumentation();
+
                         // Exporter
                         builder.AddConsoleExporter();
                         builder.AddJaegerExporter(options =>
@@ -82,7 +85,7 @@ namespace TraceContextLab
             return Task.Run(() => {
 
                 // Pay
-                using (var payActivity = _activitySource.StartActivity("Pay"))
+                using (var payActivity = _activitySource.StartActivity("Pay", ActivityKind.Internal))
                 {
                     // Execute
                     Thread.Sleep(1000);
@@ -93,7 +96,7 @@ namespace TraceContextLab
                     {
                         // Execute
                         this.CallSubService("http://localhost:8080/");
-                        printActivity?.SetTag("User", "Jane");                        
+                        printActivity?.SetTag("User", "Jane");
                     }
 
                     // Sleep

@@ -86,16 +86,15 @@ namespace TraceContextLab.SubService
                         if (httpContext != null) break;
                     }
 
-                    // TraceContext
+                    // ParentContext
+                    ActivityContext parentContext = default;
                     var traceParent = httpContext.Request.Headers["traceparent"];
-                    if (string.IsNullOrEmpty(traceParent) == true) traceParent = null;
-
+                    var traceState = httpContext.Request.Headers["tracestate"];
+                    if (string.IsNullOrEmpty(traceParent) == false) parentContext = ActivityContext.Parse(traceParent, traceState);
+                    
                     // Calculate
-                    using (var calculateActivity = _activitySource.StartActivity("Calculate"))
+                    using (var calculateActivity = _activitySource.StartActivity("Calculate", ActivityKind.Server, parentContext))
                     {
-                        // Setting
-                        if (traceParent != null) calculateActivity.SetParentId(traceParent);
-
                         // Execute
                         Thread.Sleep(1000);
                         calculateActivity?.SetTag("Amount", "500");

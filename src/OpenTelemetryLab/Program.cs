@@ -61,14 +61,14 @@ namespace OpenTelemetryLab
            return Task.Run(() =>{
 
                // Pay
-               using (var payActivity = _activitySource.StartActivity("Pay"))
+               using (var payActivity = _activitySource.StartActivity("Pay", ActivityKind.Internal))
                {
                    // Execute
                    Thread.Sleep(1000);
                    payActivity?.SetTag("User", "Clark");
 
                    // Print
-                   using (var printActivity = _activitySource.StartActivity("Print"))
+                   using (var printActivity = _activitySource.StartActivity("Print", ActivityKind.Internal))
                    {
                        // Execute
                        Thread.Sleep(1000);
