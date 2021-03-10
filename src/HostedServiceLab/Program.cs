@@ -24,9 +24,8 @@ namespace HostedServiceLab
                 .UseServiceProviderFactory(new AutofacServiceProviderFactory())
                 .ConfigureContainer<Autofac.ContainerBuilder>((containerBuilder) =>
                 {
-                    containerBuilder
-                        .RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
-                        .As<IHostedService>();
+                    // HostedService
+                    containerBuilder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).As<IHostedService>();
                 })
             ;
         }
