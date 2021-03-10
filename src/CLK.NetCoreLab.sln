@@ -19,11 +19,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TraceContextLab", "TraceCon
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TraceContextLab.SubService", "TraceContextLab.SubService\TraceContextLab.SubService.csproj", "{75444640-D8AB-4FA2-8B36-088245971DE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegisterModuleLab", "RegisterModuleLab\RegisterModuleLab.csproj", "{23DB179A-15C3-45F4-BA2D-7E48CA7085CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RegisterModuleLab", "RegisterModuleLab\RegisterModuleLab.csproj", "{23DB179A-15C3-45F4-BA2D-7E48CA7085CC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{291105FC-F6CD-4BE1-AE6A-6CAFF50A3F0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateLab", "TemplateLab\TemplateLab.csproj", "{5F101EA2-4448-4A1C-9359-FB79BE09D601}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateLab", "TemplateLab\TemplateLab.csproj", "{5F101EA2-4448-4A1C-9359-FB79BE09D601}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoActivateLab", "AutoActivateLab\AutoActivateLab.csproj", "{CD4C8995-21BE-44D6-AE80-0BFC6CEC376A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,10 @@ Global
 		{5F101EA2-4448-4A1C-9359-FB79BE09D601}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F101EA2-4448-4A1C-9359-FB79BE09D601}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F101EA2-4448-4A1C-9359-FB79BE09D601}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD4C8995-21BE-44D6-AE80-0BFC6CEC376A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD4C8995-21BE-44D6-AE80-0BFC6CEC376A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD4C8995-21BE-44D6-AE80-0BFC6CEC376A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD4C8995-21BE-44D6-AE80-0BFC6CEC376A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
