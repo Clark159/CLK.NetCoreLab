@@ -55,86 +55,88 @@ namespace TraceContextLab
                 })
             ;
         }
-    }
-
-    public class ConsoleService : BackgroundService
-    {
-        // Fields
-        private static ActivitySource _activitySource = new ActivitySource("CLK.TraceContextLab.MainModule");
-
-        private readonly IHttpClientFactory _httpClientFactory = null;
 
 
-        // Constructors
-        public ConsoleService(IHttpClientFactory httpClientFactory)
+        // Class
+        public class ConsoleService : BackgroundService
         {
-            #region Contracts
+            // Fields
+            private static ActivitySource _activitySource = new ActivitySource("CLK.TraceContextLab.MainModule");
 
-            if (httpClientFactory == null) throw new ArgumentException(nameof(httpClientFactory));
-
-            #endregion
-
-            // Default
-            _httpClientFactory = httpClientFactory;
-        }
+            private readonly IHttpClientFactory _httpClientFactory = null;
 
 
-        // Methods
-        protected override Task ExecuteAsync(CancellationToken stoppingToken)
-        {
-            return Task.Run(() => {
+            // Constructors
+            public ConsoleService(IHttpClientFactory httpClientFactory)
+            {
+                #region Contracts
 
-                // Pay
-                using (var payActivity = _activitySource.StartActivity("Pay", ActivityKind.Internal))
-                {
-                    // Execute
-                    Thread.Sleep(1000);
-                    payActivity?.SetTag("User", "Clark");
+                if (httpClientFactory == null) throw new ArgumentException(nameof(httpClientFactory));
 
-                    // Print
-                    using (var printActivity = _activitySource.StartActivity("Print", ActivityKind.Client))
+                #endregion
+
+                // Default
+                _httpClientFactory = httpClientFactory;
+            }
+
+
+            // Methods
+            protected override Task ExecuteAsync(CancellationToken stoppingToken)
+            {
+                return Task.Run(() => {
+
+                    // Pay
+                    using (var payActivity = _activitySource.StartActivity("Pay", ActivityKind.Internal))
                     {
                         // Execute
-                        this.CallSubService("http://localhost:8080/");
-                        printActivity?.SetTag("User", "Jane");
+                        Thread.Sleep(1000);
+                        payActivity?.SetTag("User", "Clark");
+
+                        // Print
+                        using (var printActivity = _activitySource.StartActivity("Print", ActivityKind.Client))
+                        {
+                            // Execute
+                            this.CallSubService("http://localhost:8080/");
+                            printActivity?.SetTag("User", "Jane");
+                        }
+
+                        // Sleep
+                        Thread.Sleep(1000);
                     }
+                });
+            }
 
-                    // Sleep
-                    Thread.Sleep(1000);
-                }
-            });
-        }
-
-        private void CallSubService(string requestUri)
-        {
-            #region Contracts
-
-            if (string.IsNullOrEmpty(requestUri) == true) throw new ArgumentException(nameof(requestUri));
-
-            #endregion
-
-            // SubService
-            using (var httpClient = _httpClientFactory.CreateClient())
+            private void CallSubService(string requestUri)
             {
-                // RequestContent
-                var requestContent = new StringContent("{user:\"Clark\"}", Encoding.UTF8, "application/json");
-                if (requestContent == null) throw new InvalidOperationException($"{nameof(requestContent)}==null");
+                #region Contracts
 
-                // Post
-                var response = httpClient.PostAsync(requestUri, requestContent).GetAwaiter().GetResult();
-                if (response == null) throw new InvalidOperationException($"{nameof(response)}==null");
-                if (response.IsSuccessStatusCode == false)
+                if (string.IsNullOrEmpty(requestUri) == true) throw new ArgumentException(nameof(requestUri));
+
+                #endregion
+
+                // SubService
+                using (var httpClient = _httpClientFactory.CreateClient())
                 {
-                    var errorMessage = response.Content?.ReadAsStringAsync()?.GetAwaiter().GetResult()?.Trim();
-                    if (string.IsNullOrEmpty(errorMessage) == false) throw new InvalidOperationException($"StatusCode={response.StatusCode}, ErrorMessage={errorMessage}");
-                }
-                if (response.IsSuccessStatusCode == false) throw new InvalidOperationException($"StatusCode={response.StatusCode}");
+                    // RequestContent
+                    var requestContent = new StringContent("{user:\"Clark\"}", Encoding.UTF8, "application/json");
+                    if (requestContent == null) throw new InvalidOperationException($"{nameof(requestContent)}==null");
 
-                // ResponseContent
-                var responseContent = response.Content;
-                if (responseContent == null) throw new InvalidOperationException($"{nameof(responseContent)}==null");
-                var responseContentString = responseContent.ReadAsStringAsync().GetAwaiter().GetResult();
-                if (string.IsNullOrEmpty(responseContentString) == true) throw new InvalidOperationException($"{nameof(responseContentString)}==null");
+                    // Post
+                    var response = httpClient.PostAsync(requestUri, requestContent).GetAwaiter().GetResult();
+                    if (response == null) throw new InvalidOperationException($"{nameof(response)}==null");
+                    if (response.IsSuccessStatusCode == false)
+                    {
+                        var errorMessage = response.Content?.ReadAsStringAsync()?.GetAwaiter().GetResult()?.Trim();
+                        if (string.IsNullOrEmpty(errorMessage) == false) throw new InvalidOperationException($"StatusCode={response.StatusCode}, ErrorMessage={errorMessage}");
+                    }
+                    if (response.IsSuccessStatusCode == false) throw new InvalidOperationException($"StatusCode={response.StatusCode}");
+
+                    // ResponseContent
+                    var responseContent = response.Content;
+                    if (responseContent == null) throw new InvalidOperationException($"{nameof(responseContent)}==null");
+                    var responseContentString = responseContent.ReadAsStringAsync().GetAwaiter().GetResult();
+                    if (string.IsNullOrEmpty(responseContentString) == true) throw new InvalidOperationException($"{nameof(responseContentString)}==null");
+                }
             }
         }
     }

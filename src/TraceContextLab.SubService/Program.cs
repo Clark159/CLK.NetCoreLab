@@ -54,69 +54,71 @@ namespace TraceContextLab.SubService
                 })
             ;
         }
-    }
-
-    public class ConsoleService : BackgroundService
-    {
-        // Fields
-        private static ActivitySource _activitySource = new ActivitySource("CLK.TraceContextLab.SubModule");
 
 
-        // Methods
-        protected override Task ExecuteAsync(CancellationToken stoppingToken)
+        // Class
+        public class ConsoleService : BackgroundService
         {
-            return Task.Run(() => {
+            // Fields
+            private static ActivitySource _activitySource = new ActivitySource("CLK.TraceContextLab.SubModule");
 
-                // Variables
-                HttpListener httpListener = null;
-                HttpListenerContext httpContext = null;
 
-                // Execute
-                try
-                {
-                    // HttpListener
-                    httpListener = new System.Net.HttpListener();
-                    httpListener.Prefixes.Add(@"http://localhost:8080/");
-                    httpListener.Start();
+            // Methods
+            protected override Task ExecuteAsync(CancellationToken stoppingToken)
+            {
+                return Task.Run(() => {
 
-                    // Listen
-                    while (true)
+                    // Variables
+                    HttpListener httpListener = null;
+                    HttpListenerContext httpContext = null;
+
+                    // Execute
+                    try
                     {
-                        httpContext = httpListener.GetContext();
-                        if (httpContext != null) break;
+                        // HttpListener
+                        httpListener = new System.Net.HttpListener();
+                        httpListener.Prefixes.Add(@"http://localhost:8080/");
+                        httpListener.Start();
+
+                        // Listen
+                        while (true)
+                        {
+                            httpContext = httpListener.GetContext();
+                            if (httpContext != null) break;
+                        }
+
+                        // ParentContext
+                        ActivityContext parentContext = default;
+                        var traceParent = httpContext.Request.Headers["traceparent"];
+                        var traceState = httpContext.Request.Headers["tracestate"];
+                        if (string.IsNullOrEmpty(traceParent) == false) parentContext = ActivityContext.Parse(traceParent, traceState);
+
+                        // Calculate
+                        using (var calculateActivity = _activitySource.StartActivity("Calculate", ActivityKind.Server, parentContext))
+                        {
+                            // Execute
+                            Thread.Sleep(1000);
+                            calculateActivity?.SetTag("Amount", "500");
+                        }
+
+                        // Response
+                        httpContext.Response.StatusCode = 200;
+                        using (var streamWriter = new StreamWriter(httpContext.Response.OutputStream))
+                        {
+                            streamWriter.Write(@"{amount:500}");
+                            streamWriter.Close();
+                        }
+                        httpContext.Response.Close();
                     }
-
-                    // ParentContext
-                    ActivityContext parentContext = default;
-                    var traceParent = httpContext.Request.Headers["traceparent"];
-                    var traceState = httpContext.Request.Headers["tracestate"];
-                    if (string.IsNullOrEmpty(traceParent) == false) parentContext = ActivityContext.Parse(traceParent, traceState);
-                    
-                    // Calculate
-                    using (var calculateActivity = _activitySource.StartActivity("Calculate", ActivityKind.Server, parentContext))
+                    finally
                     {
-                        // Execute
+                        // Dispose
                         Thread.Sleep(1000);
-                        calculateActivity?.SetTag("Amount", "500");
+                        httpListener?.Stop();
+                        httpListener?.Close();
                     }
-
-                    // Response
-                    httpContext.Response.StatusCode = 200;
-                    using (var streamWriter = new StreamWriter(httpContext.Response.OutputStream))
-                    {
-                        streamWriter.Write(@"{amount:500}");
-                        streamWriter.Close();
-                    }
-                    httpContext.Response.Close();
-                }
-                finally
-                {
-                    // Dispose
-                    Thread.Sleep(1000);
-                    httpListener?.Stop();
-                    httpListener?.Close();
-                }
-            });
+                });
+            }
         }
     }
 }

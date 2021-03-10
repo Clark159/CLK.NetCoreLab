@@ -26,52 +26,54 @@ namespace ObserverLab
                 locationPublisher.Write(new Location() { X = 3, Y = 3 });
             }
         }
-    }
 
-    public class Location
-    {
-        // Properties
-        public int X { get; set; }
 
-        public int Y { get; set; }
-    }
-
-    public class LocationPublisher : Observable<Location>
-    {
-
-    }
-
-    public class LocationObserver : IObserver<Location>
-    {
-        // Methods
-        public void OnNext(Location location)
+        // Class
+        public class Location
         {
-            #region Contracts
+            // Properties
+            public int X { get; set; }
 
-            if (location == null) throw new ArgumentException(nameof(location));
-
-            #endregion
-
-            // Display
-            Console.WriteLine($"Location: X={location.X}, Y={location.Y}");
+            public int Y { get; set; }
         }
 
-        public void OnCompleted()
+        public class LocationPublisher : Observable<Location>
         {
-            // Nothing
 
         }
 
-        public void OnError(Exception error)
+        public class LocationObserver : IObserver<Location>
         {
-            #region Contracts
+            // Methods
+            public void OnNext(Location location)
+            {
+                #region Contracts
 
-            if (error == null) throw new ArgumentException(nameof(error));
+                if (location == null) throw new ArgumentException(nameof(location));
 
-            #endregion
+                #endregion
 
-            // Nothing
+                // Display
+                Console.WriteLine($"Location: X={location.X}, Y={location.Y}");
+            }
 
+            public void OnCompleted()
+            {
+                // Nothing
+
+            }
+
+            public void OnError(Exception error)
+            {
+                #region Contracts
+
+                if (error == null) throw new ArgumentException(nameof(error));
+
+                #endregion
+
+                // Nothing
+
+            }
         }
     }
 }

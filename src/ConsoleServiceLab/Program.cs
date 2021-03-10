@@ -7,6 +7,7 @@ namespace ConsoleServiceLab
 {
     public class Program
     {
+        // Methods
         public static void Run(ILogger<Program> logger, IHostEnvironment hostEnvironment)
         {
             logger.LogWarning($"Clark Message");

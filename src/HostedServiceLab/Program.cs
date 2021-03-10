@@ -30,45 +30,47 @@ namespace HostedServiceLab
                 })
             ;
         }
-    }
-
-    public class ConsoleService : IHostedService
-    {
-        // Fields
-        private readonly ILogger<ConsoleService> _logger = null;
 
 
-        // Constructors
-        public ConsoleService(ILogger<ConsoleService> logger)
+        // Class
+        public class ConsoleService : IHostedService
         {
-            #region Contracts
-
-            if (logger == null) throw new ArgumentException();
-
-            #endregion
-
-            // Default
-            _logger = logger;
-        }
+            // Fields
+            private readonly ILogger<ConsoleService> _logger = null;
 
 
-        // Methods
-        public Task StartAsync(CancellationToken cancellationToken)
-        {
-            // Notify
-            Console.WriteLine("ConsoleService:StartAsync");
+            // Constructors
+            public ConsoleService(ILogger<ConsoleService> logger)
+            {
+                #region Contracts
 
-            // Return
-            return Task.CompletedTask;
-        }
+                if (logger == null) throw new ArgumentException();
 
-        public Task StopAsync(CancellationToken cancellationToken)
-        {
-            // Notify
-            Console.WriteLine("ConsoleService:StopAsync");
+                #endregion
 
-            // Return
-            return Task.CompletedTask;
+                // Default
+                _logger = logger;
+            }
+
+
+            // Methods
+            public Task StartAsync(CancellationToken cancellationToken)
+            {
+                // Notify
+                Console.WriteLine("ConsoleService:StartAsync");
+
+                // Return
+                return Task.CompletedTask;
+            }
+
+            public Task StopAsync(CancellationToken cancellationToken)
+            {
+                // Notify
+                Console.WriteLine("ConsoleService:StopAsync");
+
+                // Return
+                return Task.CompletedTask;
+            }
         }
     }
 }

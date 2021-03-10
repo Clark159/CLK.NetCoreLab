@@ -47,39 +47,41 @@ namespace OpenTelemetryLab
                 })
             ;
         }
-    }
-
-    public class ConsoleService : BackgroundService
-    {
-        // Fields
-        private static ActivitySource _activitySource = new ActivitySource("CLK.OpenTelemetryLab.MainModule");
 
 
-        // Methods
-        protected override Task ExecuteAsync(CancellationToken stoppingToken)
+        // Class
+        public class ConsoleService : BackgroundService
         {
-           return Task.Run(() =>{
+            // Fields
+            private static ActivitySource _activitySource = new ActivitySource("CLK.OpenTelemetryLab.MainModule");
 
-               // Pay
-               using (var payActivity = _activitySource.StartActivity("Pay", ActivityKind.Internal))
-               {
-                   // Execute
-                   Thread.Sleep(1000);
-                   payActivity?.SetTag("User", "Clark");
 
-                   // Print
-                   using (var printActivity = _activitySource.StartActivity("Print", ActivityKind.Internal))
-                   {
-                       // Execute
-                       Thread.Sleep(1000);
-                       printActivity?.SetTag("User", "Jane");
-                   }
+            // Methods
+            protected override Task ExecuteAsync(CancellationToken stoppingToken)
+            {
+                return Task.Run(() => {
 
-                   // Sleep
-                   Thread.Sleep(1000);
-               }
+                    // Pay
+                    using (var payActivity = _activitySource.StartActivity("Pay", ActivityKind.Internal))
+                    {
+                        // Execute
+                        Thread.Sleep(1000);
+                        payActivity?.SetTag("User", "Clark");
 
-           });
+                        // Print
+                        using (var printActivity = _activitySource.StartActivity("Print", ActivityKind.Internal))
+                        {
+                            // Execute
+                            Thread.Sleep(1000);
+                            printActivity?.SetTag("User", "Jane");
+                        }
+
+                        // Sleep
+                        Thread.Sleep(1000);
+                    }
+
+                });
+            }
         }
     }
 }
