@@ -23,26 +23,26 @@ namespace TraceContextLab
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureServices(services =>
+                .ConfigureServices((services) =>
                 {
                     // HttpClient
                     services.AddHttpClient();
 
                     // OpenTelemetry
-                    services.AddOpenTelemetryTracing((builder) =>
+                    services.AddOpenTelemetryTracing((tracerProvider) =>
                     {
                         // Resource
-                        builder.SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("CLK-TraceContextLab-MainService"));
+                        tracerProvider.SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("CLK-TraceContextLab-MainService"));
 
                         // Source
-                        builder.AddSource("CLK.TraceContextLab.MainModule");
+                        tracerProvider.AddSource("CLK.TraceContextLab.MainModule");
 
                         // Instrumentation
-                        //builder.AddHttpClientInstrumentation();
+                        //tracerProvider.AddHttpClientInstrumentation();
 
                         // Exporter
-                        builder.AddConsoleExporter();
-                        builder.AddJaegerExporter(options =>
+                        tracerProvider.AddConsoleExporter();
+                        tracerProvider.AddJaegerExporter(options =>
                         {
                             options.AgentHost = "localhost";
                         });

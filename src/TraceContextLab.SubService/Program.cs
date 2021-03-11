@@ -25,23 +25,23 @@ namespace TraceContextLab.SubService
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureServices(services =>
+                .ConfigureServices((services) =>
                 {
                     // HttpClient
                     services.AddHttpClient();
 
                     // OpenTelemetry
-                    services.AddOpenTelemetryTracing((builder) =>
+                    services.AddOpenTelemetryTracing((tracerProvider) =>
                     {
                         // Resource
-                        builder.SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("CLK-TraceContextLab-SubService"));
+                        tracerProvider.SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("CLK-TraceContextLab-SubService"));
 
                         // Source
-                        builder.AddSource("CLK.TraceContextLab.SubModule");
+                        tracerProvider.AddSource("CLK.TraceContextLab.SubModule");
 
                         // Exporter
-                        builder.AddConsoleExporter();
-                        builder.AddJaegerExporter(options =>
+                        tracerProvider.AddConsoleExporter();
+                        tracerProvider.AddJaegerExporter(options =>
                         {
                             options.AgentHost = "localhost";
                         });

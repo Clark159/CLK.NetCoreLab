@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateLab", "TemplateLab\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoActivateLab", "AutoActivateLab\AutoActivateLab.csproj", "{CD4C8995-21BE-44D6-AE80-0BFC6CEC376A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigurationLab", "ConfigurationLab\ConfigurationLab.csproj", "{2B9A9984-12C5-4013-90F6-C367985BCCD1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{CD4C8995-21BE-44D6-AE80-0BFC6CEC376A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD4C8995-21BE-44D6-AE80-0BFC6CEC376A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD4C8995-21BE-44D6-AE80-0BFC6CEC376A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B9A9984-12C5-4013-90F6-C367985BCCD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B9A9984-12C5-4013-90F6-C367985BCCD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B9A9984-12C5-4013-90F6-C367985BCCD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B9A9984-12C5-4013-90F6-C367985BCCD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

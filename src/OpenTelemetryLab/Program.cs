@@ -21,20 +21,20 @@ namespace OpenTelemetryLab
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureServices(services=>
+                .ConfigureServices((services)=>
                 {
                     // OpenTelemetry
-                    services.AddOpenTelemetryTracing((builder) =>
+                    services.AddOpenTelemetryTracing((tracerProvider) =>
                     {
                         // Resource
-                        builder.SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("CLK-OpenTelemetryLab-Service"));
+                        tracerProvider.SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("CLK-OpenTelemetryLab-Service"));
                         
                         // Source
-                        builder.AddSource("CLK.OpenTelemetryLab.MainModule");
+                        tracerProvider.AddSource("CLK.OpenTelemetryLab.MainModule");
 
                         // Exporter
-                        builder.AddConsoleExporter();
-                        builder.AddJaegerExporter(options =>
+                        tracerProvider.AddConsoleExporter();
+                        tracerProvider.AddJaegerExporter(options =>
                         {
                             options.AgentHost = "localhost";
                         });

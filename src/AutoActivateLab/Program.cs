@@ -21,15 +21,15 @@ namespace AutoActivateLab
         public static IHostBuilder CreateHostBuilder(string[] args)=>
             Host.CreateDefaultBuilder(args)
                 .UseServiceProviderFactory(new AutofacServiceProviderFactory())
-                .ConfigureContainer<Autofac.ContainerBuilder>((builder) =>
+                .ConfigureContainer<Autofac.ContainerBuilder>((container) =>
                 {
                     // SettingContext
                     {
                         // Register
-                        builder.RegisterType<SettingContext>().As<SettingContext>()
+                        container.RegisterType<SettingContext>().As<SettingContext>()
 
                         // Start
-                        .OnActivated(handler =>
+                        .OnActivated((handler) =>
                         {
                             handler.Instance.Start();
                         })

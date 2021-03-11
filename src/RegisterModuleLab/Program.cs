@@ -21,12 +21,12 @@ namespace RegisterModuleLab
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .UseServiceProviderFactory(new AutofacServiceProviderFactory())
-                .ConfigureContainer<Autofac.ContainerBuilder>((builder) =>
+                .ConfigureContainer<Autofac.ContainerBuilder>((container) =>
                 {
                     // Module
-                    builder.RegisterAssemblyModules(Assembly.GetEntryAssembly());
+                    container.RegisterAssemblyModules(Assembly.GetEntryAssembly());
                 })
-                .ConfigureServices(services =>
+                .ConfigureServices((services) =>
                 {
                     // ConsoleService
                     services.AddHostedService<ConsoleService>();
@@ -86,18 +86,18 @@ namespace RegisterModuleLab
         public class SettingContextModule : Autofac.Module
         {
             // Methods
-            protected override void Load(ContainerBuilder builder)
+            protected override void Load(ContainerBuilder container)
             {
                 #region Contracts
 
-                if (builder == null) throw new ArgumentException(nameof(builder));
+                if (container == null) throw new ArgumentException(nameof(container));
 
                 #endregion
 
                 // SettingContext
                 {
                     // Register
-                    builder.RegisterType<SettingContext>().As<SettingContext>();
+                    container.RegisterType<SettingContext>().As<SettingContext>();
                 }
             }
         }

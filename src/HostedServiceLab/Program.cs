@@ -20,10 +20,10 @@ namespace HostedServiceLab
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .UseServiceProviderFactory(new AutofacServiceProviderFactory())
-                .ConfigureContainer<Autofac.ContainerBuilder>((builder) =>
+                .ConfigureContainer<Autofac.ContainerBuilder>((container) =>
                 {
                     // HostedService
-                    builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly()).As<IHostedService>();
+                    container.RegisterAssemblyTypes(Assembly.GetEntryAssembly()).As<IHostedService>();
                 });
 
 
