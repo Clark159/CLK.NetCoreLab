@@ -10,6 +10,14 @@ namespace ConsoleServiceLab
         // Methods
         public static void Run(ILogger<Program> logger, IHostEnvironment hostEnvironment)
         {
+            #region Contracts
+
+            if (logger == null) throw new ArgumentException(nameof(logger));
+            if (hostEnvironment == null) throw new ArgumentException(nameof(hostEnvironment));
+
+            #endregion
+
+            // Execute
             logger.LogWarning($"Clark Message");
             logger.LogWarning(hostEnvironment.ContentRootPath);
         }
@@ -24,7 +32,6 @@ namespace ConsoleServiceLab
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddConsoleService<Program>();
-                })
-            ;
+                });
     }
 }

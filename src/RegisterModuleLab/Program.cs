@@ -18,23 +18,19 @@ namespace RegisterModuleLab
             CreateHostBuilder(args).Build().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args)
-        {
-            return Host
-                .CreateDefaultBuilder(args)
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
                 .UseServiceProviderFactory(new AutofacServiceProviderFactory())
-                .ConfigureContainer<Autofac.ContainerBuilder>((containerBuilder) =>
+                .ConfigureContainer<Autofac.ContainerBuilder>((builder) =>
                 {
                     // Module
-                    containerBuilder.RegisterAssemblyModules(Assembly.GetExecutingAssembly());
+                    builder.RegisterAssemblyModules(Assembly.GetEntryAssembly());
                 })
                 .ConfigureServices(services =>
                 {
                     // ConsoleService
-                    //services.AddHostedService<ConsoleService>();
-                })
-            ;
-        }
+                    services.AddHostedService<ConsoleService>();
+                });
 
 
         // Class
@@ -101,16 +97,7 @@ namespace RegisterModuleLab
                 // SettingContext
                 {
                     // Register
-                    builder.RegisterType<SettingContext>().As<SettingContext>()
-
-                    // Start
-                    .OnActivated(handler =>
-                    {
-
-                    })
-
-                    // Lifetime
-                    .AutoActivate().SingleInstance();
+                    builder.RegisterType<SettingContext>().As<SettingContext>();
                 }
             }
         }

@@ -17,18 +17,14 @@ namespace HostedServiceLab
             CreateHostBuilder(args).Build().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args)
-        {
-            return Host
-                .CreateDefaultBuilder(args)
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
                 .UseServiceProviderFactory(new AutofacServiceProviderFactory())
-                .ConfigureContainer<Autofac.ContainerBuilder>((containerBuilder) =>
+                .ConfigureContainer<Autofac.ContainerBuilder>((builder) =>
                 {
                     // HostedService
-                    containerBuilder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).As<IHostedService>();
-                })
-            ;
-        }
+                    builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly()).As<IHostedService>();
+                });
 
 
         // Class

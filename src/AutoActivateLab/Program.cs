@@ -18,17 +18,15 @@ namespace AutoActivateLab
             CreateHostBuilder(args).Build().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args)
-        {
-            return Host
-                .CreateDefaultBuilder(args)
+        public static IHostBuilder CreateHostBuilder(string[] args)=>
+            Host.CreateDefaultBuilder(args)
                 .UseServiceProviderFactory(new AutofacServiceProviderFactory())
-                .ConfigureContainer<Autofac.ContainerBuilder>((containerBuilder) =>
+                .ConfigureContainer<Autofac.ContainerBuilder>((builder) =>
                 {
                     // SettingContext
                     {
                         // Register
-                        containerBuilder.RegisterType<SettingContext>().As<SettingContext>()
+                        builder.RegisterType<SettingContext>().As<SettingContext>()
 
                         // Start
                         .OnActivated(handler =>
@@ -39,9 +37,7 @@ namespace AutoActivateLab
                         // Lifetime
                         .AutoActivate().SingleInstance();
                     }
-                })
-            ;
-        }
+                });
 
 
         // Class

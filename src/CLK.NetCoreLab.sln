@@ -25,7 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{291105
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateLab", "TemplateLab\TemplateLab.csproj", "{5F101EA2-4448-4A1C-9359-FB79BE09D601}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoActivateLab", "AutoActivateLab\AutoActivateLab.csproj", "{CD4C8995-21BE-44D6-AE80-0BFC6CEC376A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoActivateLab", "AutoActivateLab\AutoActivateLab.csproj", "{CD4C8995-21BE-44D6-AE80-0BFC6CEC376A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

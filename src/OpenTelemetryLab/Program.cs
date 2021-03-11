@@ -19,10 +19,8 @@ namespace OpenTelemetryLab
             CreateHostBuilder(args).Build().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args)
-        {
-            return Host
-                .CreateDefaultBuilder(args)
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
                 .ConfigureServices(services=>
                 {
                     // OpenTelemetry
@@ -44,9 +42,7 @@ namespace OpenTelemetryLab
 
                     // ConsoleService
                     services.AddHostedService<ConsoleService>();
-                })
-            ;
-        }
+                });
 
 
         // Class
