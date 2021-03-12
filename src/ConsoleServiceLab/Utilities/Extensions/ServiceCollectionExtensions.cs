@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleServiceLab
 {
-    public static class ServiceCollectionExtension
+    public static class ServiceCollectionExtensions
     {
         // Methods
         public static IServiceCollection AddConsoleService<TConsoleService>(this IServiceCollection services) where TConsoleService : class

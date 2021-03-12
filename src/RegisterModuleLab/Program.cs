@@ -60,7 +60,7 @@ namespace RegisterModuleLab
                 return Task.Run(() =>
                 {
                     // Execute
-                    _settingContext.Execute();
+                    Console.WriteLine(_settingContext.GetValue());
                 });
             }
         }
@@ -76,10 +76,10 @@ namespace RegisterModuleLab
 
 
             // Methods
-            public void Execute()
+            public string GetValue()
             {
-                // Execute
-                Console.WriteLine("Hello World!");
+                // Return
+                return "Hello World!";
             }
         }
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleServiceLab
 {
-    public static class TypeExtension
+    public static class TypeExtensions
     {
         // Methods
         public static ConstructorInfo FindConstructor(this Type instanceType)

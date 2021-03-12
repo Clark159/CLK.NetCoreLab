@@ -21,13 +21,15 @@ namespace ConfigurationLab
             Host.CreateDefaultBuilder(args)
                 .ConfigureAppConfiguration((hostContext, configuration) =>
                 {
-                    // Json
+                    // File
                     configuration.AddJsonFile(Path.Combine(AppContext.BaseDirectory, "FileSetting.json"));
 
                     // Memory
                     configuration.AddInMemoryCollection(new Dictionary<string, string>()
                     {
-                        {"MemorySeting","Jane"}
+                        {"service02:Id","Memory_Id02"},
+                        {"service02:Name","Memory_Name02"},
+                        {"Setting02","Memory_Setting02"}
                     });
                 })
                 .ConfigureServices((services) =>
@@ -40,15 +42,64 @@ namespace ConfigurationLab
         // Class
         public class ConsoleService : BackgroundService
         {
+            // Fields
+            private readonly IConfiguration _configuration = null;
+
+
+            // Constructors
+            public ConsoleService(IConfiguration configuration)
+            {
+                #region Contracts
+
+                if (configuration == null) throw new ArgumentException(nameof(configuration));
+
+                #endregion
+
+                // Default
+                _configuration = configuration;
+            }
+
+
             // Methods
             protected override Task ExecuteAsync(CancellationToken stoppingToken)
             {
                 return Task.Run(() =>
                 {
-                    // Execute
-                    Console.WriteLine("Hello World!");
+                    // File
+                    {
+                        // Service01                       
+                        var service01 = _configuration.Bind<ServiceSetting>("service01");
+                        Console.WriteLine($"service01.Id  = {service01.Id}");
+                        Console.WriteLine($"service01.Name= {service01.Name}");
+
+                        // Setting01
+                        var setting01 = _configuration.GetValue<string>("Setting01");
+                        Console.WriteLine($"setting01     = {setting01}");
+                    }
+                    Console.WriteLine();
+
+                    // Memory
+                    {
+                        // Service02                       
+                        var service02 = _configuration.Bind<ServiceSetting>("service02");
+                        Console.WriteLine($"service02.Id  = {service02.Id}");
+                        Console.WriteLine($"service02.Name= {service02.Name}");
+
+                        // Setting02
+                        var setting02 = _configuration.GetValue<string>("Setting02");
+                        Console.WriteLine($"setting02     = {setting02}");
+                    }
+                    Console.WriteLine();
                 });
             }
+        }
+
+        public class ServiceSetting
+        {
+            // Properties
+            public string Id { get; set; }
+
+            public string Name { get; set; }
         }
     }
 }
