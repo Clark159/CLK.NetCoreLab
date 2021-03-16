@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using System;
@@ -17,6 +19,7 @@ namespace OptionsLab
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .UseServiceProviderFactory(new AutofacServiceProviderFactory())
                 .ConfigureServices((hostContext, services) =>
                 {
                     // ProgramOptions
@@ -45,6 +48,20 @@ namespace OptionsLab
 
                     // ProgramService
                     services.AddHostedService<ProgramService>();
+                })
+                .ConfigureContainer<Autofac.ContainerBuilder>((container) =>
+                {
+                    // ProgramOptions
+                    {
+                        // IConfigureOptions
+                        container.RegisterInstance<IConfigureOptions<ProgramOptions>>
+                        (
+                            new ConfigureNamedOptions<ProgramOptions>(Options.DefaultName, (options) =>
+                            {
+                                options.Value004 = "Config004";
+                            })
+                        );
+                    }
                 });
 
 
@@ -78,6 +95,7 @@ namespace OptionsLab
                     Console.WriteLine($"_options.Value001={_options.Value?.Value001}");
                     Console.WriteLine($"_options.Value002={_options.Value?.Value002}");
                     Console.WriteLine($"_options.Value003={_options.Value?.Value003}");
+                    Console.WriteLine($"_options.Value004={_options.Value?.Value004}");
                 });
             }
         }
@@ -90,6 +108,8 @@ namespace OptionsLab
             public string Value002 { get; set; } = "Default002";
 
             public string Value003 { get; set; } = "Default003";
+
+            public string Value004 { get; set; } = "Default004";
         }
     }
 }
