@@ -6,9 +6,9 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace TemplateLab
+namespace QuartzLab
 {
-    public class QuartzLab
+    public class Program
     {
         // Methods
         public static void Main(string[] args)
@@ -26,20 +26,12 @@ namespace TemplateLab
                         // Setting
                         options.UseMicrosoftDependencyInjectionScopedJobFactory();
 
-                        // Job
+                        // ScheduleJob
+                        options.ScheduleJob<HelloWorldJob>((trigger) =>
                         {
-                            // Create a "key" for the job
-                            var jobKey = new JobKey("HelloWorldJob");
-
-                            // Register the job with the DI container
-                            options.AddJob<HelloWorldJob>(opts => opts.WithIdentity(jobKey));
-
-                            // Create a trigger for the job
-                            options.AddTrigger(trigger => trigger
-                                   .ForJob(jobKey) 
-                                   .WithIdentity("HelloWorldJob-trigger")
-                                   .WithCronSchedule("0/5 * * * * ?"));
-                        }
+                            // Trigger
+                            trigger.WithCronSchedule("0/5 * * * * ?");
+                        });
                     });
                     services.AddQuartzHostedService(options => options.WaitForJobsToComplete = true);
                 });
@@ -76,11 +68,12 @@ namespace TemplateLab
 
                 #endregion
 
-                // Display
-                _logger.LogWarning("Hello World!");
-
-                // Return
-                return Task.CompletedTask;
+                // Execute
+                return Task.Run(() =>
+                {
+                    // Display
+                    _logger.LogWarning("Hello World!");
+                });
             }
         }
     }
