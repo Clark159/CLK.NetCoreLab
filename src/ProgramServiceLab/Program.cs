@@ -3,7 +3,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 
-namespace ConsoleServiceLab
+namespace ProgramServiceLab
 {
     public class Program
     {
@@ -18,7 +18,7 @@ namespace ConsoleServiceLab
             #endregion
 
             // Execute
-            logger.LogWarning($"Clark Message");
+            logger.LogWarning($"Hello World!");
             logger.LogWarning(hostEnvironment.ContentRootPath);
         }
 
@@ -31,7 +31,7 @@ namespace ConsoleServiceLab
             Host.CreateDefaultBuilder(args)
                 .ConfigureServices((services) =>
                 {
-                    services.AddConsoleService<Program>();
+                    services.AddProgramService<Program>();
                 });
     }
 }

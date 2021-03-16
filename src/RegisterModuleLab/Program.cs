@@ -28,20 +28,20 @@ namespace RegisterModuleLab
                 })
                 .ConfigureServices((services) =>
                 {
-                    // ConsoleService
-                    services.AddHostedService<ConsoleService>();
+                    // ProgramService
+                    services.AddHostedService<ProgramService>();
                 });
 
 
         // Class
-        public class ConsoleService : BackgroundService
+        public class ProgramService : BackgroundService
         {
             // Fields
             private readonly SettingContext _settingContext = null;
 
 
             // Constructors
-            public ConsoleService(SettingContext settingContext)
+            public ProgramService(SettingContext settingContext)
             {
                 #region Contracts
 

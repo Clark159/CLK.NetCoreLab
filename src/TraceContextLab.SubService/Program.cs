@@ -47,13 +47,13 @@ namespace TraceContextLab.SubService
                         });
                     });
 
-                    // ConsoleService
-                    services.AddHostedService<ConsoleService>();
+                    // ProgramService
+                    services.AddHostedService<ProgramService>();
                 });
 
 
         // Class
-        public class ConsoleService : BackgroundService
+        public class ProgramService : BackgroundService
         {
             // Fields
             private static ActivitySource _activitySource = new ActivitySource("CLK.TraceContextLab.SubModule");

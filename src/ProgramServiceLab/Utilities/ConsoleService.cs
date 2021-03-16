@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ConsoleServiceLab
+namespace ProgramServiceLab
 {
-    public class ConsoleService<TConsoleService> : BackgroundService where TConsoleService : class
+    public class ProgramService<TProgram> : BackgroundService where TProgram : class
     {
         // Fields
         private readonly IServiceProvider _serviceProvider = null;
@@ -17,7 +17,7 @@ namespace ConsoleServiceLab
 
 
         // Constructors
-        public ConsoleService(IServiceProvider serviceProvider, IHostApplicationLifetime hostApplicationLifetime)
+        public ProgramService(IServiceProvider serviceProvider, IHostApplicationLifetime hostApplicationLifetime)
         {
             #region Contracts
 
@@ -39,7 +39,7 @@ namespace ConsoleServiceLab
             return Task.Run(() =>
             {
                 // Run
-                ServiceActivator.ExecuteMethod<TConsoleService>(_serviceProvider, "Run");
+                ServiceActivator.ExecuteMethod<TProgram>(_serviceProvider, "Run");
 
                 // End
                 _hostApplicationLifetime.StopApplication();

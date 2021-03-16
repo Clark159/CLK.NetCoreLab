@@ -18,13 +18,13 @@ namespace TemplateLab
             Host.CreateDefaultBuilder(args)
                 .ConfigureServices((services) =>
                 {
-                    // ConsoleService
-                    services.AddHostedService<ConsoleService>();
+                    // ProgramService
+                    services.AddHostedService<ProgramService>();
                 });
 
 
         // Class
-        public class ConsoleService : BackgroundService
+        public class ProgramService : BackgroundService
         {
             // Methods
             protected override Task ExecuteAsync(CancellationToken stoppingToken)

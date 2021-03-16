@@ -34,20 +34,20 @@ namespace ConfigurationLab
                 })
                 .ConfigureServices((services) =>
                 {
-                    // ConsoleService
-                    services.AddHostedService<ConsoleService>();
+                    // ProgramService
+                    services.AddHostedService<ProgramService>();
                 });
 
 
         // Class
-        public class ConsoleService : BackgroundService
+        public class ProgramService : BackgroundService
         {
             // Fields
             private readonly IConfiguration _configuration = null;
 
 
             // Constructors
-            public ConsoleService(IConfiguration configuration)
+            public ProgramService(IConfiguration configuration)
             {
                 #region Contracts
 

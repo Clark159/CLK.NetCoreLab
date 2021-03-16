@@ -28,14 +28,14 @@ namespace HostedServiceLab
 
 
         // Class
-        public class ConsoleService : IHostedService
+        public class ProgramService : IHostedService
         {
             // Fields
-            private readonly ILogger<ConsoleService> _logger = null;
+            private readonly ILogger<ProgramService> _logger = null;
 
 
             // Constructors
-            public ConsoleService(ILogger<ConsoleService> logger)
+            public ProgramService(ILogger<ProgramService> logger)
             {
                 #region Contracts
 
@@ -52,7 +52,7 @@ namespace HostedServiceLab
             public Task StartAsync(CancellationToken cancellationToken)
             {
                 // Notify
-                Console.WriteLine("ConsoleService:StartAsync");
+                Console.WriteLine("ProgramService:StartAsync");
 
                 // Return
                 return Task.CompletedTask;
@@ -61,7 +61,7 @@ namespace HostedServiceLab
             public Task StopAsync(CancellationToken cancellationToken)
             {
                 // Notify
-                Console.WriteLine("ConsoleService:StopAsync");
+                Console.WriteLine("ProgramService:StopAsync");
 
                 // Return
                 return Task.CompletedTask;

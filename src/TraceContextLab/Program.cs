@@ -48,13 +48,13 @@ namespace TraceContextLab
                         });
                     });
 
-                    // ConsoleService
-                    services.AddHostedService<ConsoleService>();
+                    // ProgramService
+                    services.AddHostedService<ProgramService>();
                 });
 
 
         // Class
-        public class ConsoleService : BackgroundService
+        public class ProgramService : BackgroundService
         {
             // Fields
             private static ActivitySource _activitySource = new ActivitySource("CLK.TraceContextLab.MainModule");
@@ -63,7 +63,7 @@ namespace TraceContextLab
 
 
             // Constructors
-            public ConsoleService(IHttpClientFactory httpClientFactory)
+            public ProgramService(IHttpClientFactory httpClientFactory)
             {
                 #region Contracts
 
