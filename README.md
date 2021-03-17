@@ -1,9 +1,24 @@
 # CLK.NetCoreLab
 
 
+## [.NET Core] Quartz.Net 程式範例
+
+.NET Core裡可以使用Quartz.Net進行工作排程。本篇範例程式展示如何使用內建DI及外掛的Autofac進行排程作業掛載，也展示如何使用Cron expression設定每五秒一次的執行時間。除範例程式外，技術細節也推薦下列兩篇參考資料輔助學習。
+
+範例原碼：https://github.com/Clark159/CLK.NetCoreLab
+
+範例專案：QuartzLab
+
+參考資料：
+  
+  1. 建立Quartz.Net基礎知識及如何在.NET Core專案內掛載排程。 [在 ASP.NET Core和Worker Service中使用Quartz.Net](https://codingnote.cc/zh-tw/p/292319/)  
+  
+  2. 了解Cron expression規則，以滿足各種排程執行時間需求，例如每月15號執行、每個星期三早上5點執行。 [Cron expression - 蚂蚁集团金融科技](https://tech.antfin.com/docs/10/64769)
+
+
 ## [.NET Core] IOptions<T\> 程式範例
 
-在.NET Core中可以套用內建的Options Pattern，來進行強型別參數的設定+注入。除範例程式外，也推薦下兩篇參考資料引導學習。
+在.NET Core中可以套用內建的Options Pattern，來進行強型別參數的設定+注入。除範例程式外，也推薦兩篇參考資料引導學習。
 
 範例原碼：https://github.com/Clark159/CLK.NetCoreLab
 
@@ -14,18 +29,7 @@
   1. 先從使用場景切入，了解Options Pattern的用途。 [【5min+】更好的选项实践。.Net Core中的IOptions](https://www.cnblogs.com/uoyo/p/12583149.html)。   
     
   2. 再從原始碼切入，剖析Options Pattern的原理。 [ASP.NET Core 2.1 源码学习之 Options:Configure]( https://www.cnblogs.com/RainingNight/p/strongly-typed-options-configure-in-asp-net-core.html)。
-
-
-## [.NET Core] Quartz.Net 程式範例
-
-.NET Core裡可以使用Quartz.Net進行工作排程。除範例程式外，參考資料裡的部落格文章，作者寫得蠻淺顯易懂有興趣的朋友可以研究看看。
-
-範例原碼：https://github.com/Clark159/CLK.NetCoreLab
-
-範例專案：QuartzLab
-
-參考資料：[在 ASP.NET Core和Worker Service中使用Quartz.Net](https://codingnote.cc/zh-tw/p/292319/)
-
+  
 
 ## [.NET Core] AutoActivate 程式範例
 
