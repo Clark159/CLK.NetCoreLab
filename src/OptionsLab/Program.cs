@@ -39,11 +39,17 @@ namespace OptionsLab
                             })
                         );
 
-                        // Configuration
+                        // IConfiguration
                         services.Configure<ProgramOptions>
                         (
                             hostContext.Configuration.GetSection("ProgramOptions")
                         );
+
+                        // AddOptions
+                        services.AddOptions<ProgramOptions>().Configure<IHostEnvironment>((options, hostEnvironment) =>
+                        {
+                            options.Value005 = hostEnvironment.ApplicationName;
+                        });
                     }
 
                     // ProgramService
@@ -96,6 +102,7 @@ namespace OptionsLab
                     Console.WriteLine($"_options.Value002={_options.Value?.Value002}");
                     Console.WriteLine($"_options.Value003={_options.Value?.Value003}");
                     Console.WriteLine($"_options.Value004={_options.Value?.Value004}");
+                    Console.WriteLine($"_options.Value005={_options.Value?.Value005}");
                 });
             }
         }
@@ -110,6 +117,8 @@ namespace OptionsLab
             public string Value003 { get; set; } = "Default003";
 
             public string Value004 { get; set; } = "Default004";
+
+            public string Value005 { get; set; } = "Default005";
         }
     }
 }
