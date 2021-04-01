@@ -37,7 +37,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Autofac", "Autofac", "{1585
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OpenTelemetry", "OpenTelemetry", "{648C029D-80A0-4605-A861-913038CEEF4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NamedServiceLab", "NamedServiceLab\NamedServiceLab.csproj", "{FB7D68E8-4ABC-4A1D-8714-52302B884819}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NamedServiceLab", "NamedServiceLab\NamedServiceLab.csproj", "{FB7D68E8-4ABC-4A1D-8714-52302B884819}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WithParameterLab", "WithParameterLab\WithParameterLab.csproj", "{D473F64E-FA5A-450A-93AC-8C2C10DD2407}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -105,6 +107,10 @@ Global
 		{FB7D68E8-4ABC-4A1D-8714-52302B884819}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB7D68E8-4ABC-4A1D-8714-52302B884819}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB7D68E8-4ABC-4A1D-8714-52302B884819}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D473F64E-FA5A-450A-93AC-8C2C10DD2407}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D473F64E-FA5A-450A-93AC-8C2C10DD2407}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D473F64E-FA5A-450A-93AC-8C2C10DD2407}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D473F64E-FA5A-450A-93AC-8C2C10DD2407}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -120,6 +126,7 @@ Global
 		{5F101EA2-4448-4A1C-9359-FB79BE09D601} = {291105FC-F6CD-4BE1-AE6A-6CAFF50A3F0E}
 		{CD4C8995-21BE-44D6-AE80-0BFC6CEC376A} = {1585447F-7C5A-412D-ADD3-D5EA2AD6B296}
 		{FB7D68E8-4ABC-4A1D-8714-52302B884819} = {1585447F-7C5A-412D-ADD3-D5EA2AD6B296}
+		{D473F64E-FA5A-450A-93AC-8C2C10DD2407} = {1585447F-7C5A-412D-ADD3-D5EA2AD6B296}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D258BC6B-DA7B-460C-A772-4E72B345F41B}

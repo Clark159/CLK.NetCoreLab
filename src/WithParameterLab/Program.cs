@@ -1,14 +1,16 @@
 ﻿using Autofac;
+using Autofac.Core;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RegisterModuleLab
+namespace WithParameterLab
 {
     public class Program
     {
@@ -21,15 +23,36 @@ namespace RegisterModuleLab
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .UseServiceProviderFactory(new AutofacServiceProviderFactory())
-                .ConfigureContainer<Autofac.ContainerBuilder>((container) =>
-                {
-                    // Module
-                    container.RegisterAssemblyModules(Assembly.GetEntryAssembly());
-                })
                 .ConfigureServices((services) =>
                 {
                     // ProgramService
                     services.AddHostedService<ProgramService>();
+                })
+                .ConfigureContainer<Autofac.ContainerBuilder>((container) =>
+                {
+                    // SettingContext
+                    {
+                        // ParameterList
+                        var parameterList = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+                        parameterList.Add("AAA", "Data001");
+                        parameterList.Add("BBB", "123");
+
+                        // Register
+                        container.RegisterType<SettingContext>().As<SettingContext>().WithParameter
+                        (
+                            // ParameterSelector
+                            (parameterInfo, componentContext) =>
+                            {
+                                return parameterList.ContainsKey(parameterInfo.Name);
+                            },
+
+                            // ValueProvider
+                            (parameterInfo, componentContext) =>
+                            {
+                                return Convert.ChangeType(parameterList[parameterInfo.Name], parameterInfo.ParameterType);
+                            }
+                        );
+                    }
                 });
 
 
@@ -67,30 +90,19 @@ namespace RegisterModuleLab
 
         public class SettingContext
         {
+            // Constructors
+            public SettingContext(string aaa, int bbb)
+            {
+                // Display
+                Console.WriteLine($"aaa={aaa}");
+                Console.WriteLine($"bbb={bbb}");
+            }
+
             // Methods
             public string GetValue()
             {
                 // Return
                 return "Hello World!";
-            }
-        }
-
-        public class SettingContextModule : Autofac.Module
-        {
-            // Methods
-            protected override void Load(ContainerBuilder container)
-            {
-                #region Contracts
-
-                if (container == null) throw new ArgumentException(nameof(container));
-
-                #endregion
-
-                // SettingContext
-                {
-                    // Register
-                    container.RegisterType<SettingContext>().As<SettingContext>();
-                }
             }
         }
     }

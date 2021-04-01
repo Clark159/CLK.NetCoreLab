@@ -43,14 +43,6 @@ namespace AutoActivateLab
         // Class
         public class SettingContext
         {
-            // Constructors
-            public SettingContext()
-            {
-                // Display
-                Console.WriteLine("SettingContext Created");
-            }
-
-
             // Methods
             public void Start()
             {

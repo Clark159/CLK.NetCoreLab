@@ -87,7 +87,6 @@ namespace NamedServiceLab
             }
         }
 
-
         public interface SettingContext
         {
             // Methods
