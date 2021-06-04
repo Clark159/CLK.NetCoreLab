@@ -61,3 +61,13 @@
   5. TraceContextLab: OpenTelemetry套件搭配W3C Trace Context進行分散式導出至APM的功能。(以Uber Jaeger為範例)
 
 後記：這些範例盡量以純粹的.NET Core進行說明。
+
+
+## [.NET Core] Remove Console Log 程式範例
+
+.NET Core預設配置ConsoleLoggerProvider將Log資料輸出到Console畫面，當Log多的時候，會造成Console畫面被洗版的問題。範例程式，展示如何移除預設配置的ConsoleLoggerProvider，給有興趣的朋友參考。
+
+範例原碼：https://github.com/Clark159/CLK.NetCoreLab
+
+範例專案：RemoveServiceLab
+
