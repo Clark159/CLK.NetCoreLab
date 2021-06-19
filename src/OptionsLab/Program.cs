@@ -22,12 +22,27 @@ namespace OptionsLab
                 .UseServiceProviderFactory(new AutofacServiceProviderFactory())
                 .ConfigureServices((hostContext, services) =>
                 {
+                    // ProgramService
+                    services.AddHostedService<ProgramService>();
+
                     // ProgramOptions
                     {
-                        // Configure
+                        // Configure-Setting
                         services.Configure<ProgramOptions>((options) =>
                         {
                             options.Value001 = "Config001";
+                        });
+
+                        // Configure-IConfiguration
+                        services.Configure<ProgramOptions>
+                        (
+                            hostContext.Configuration.GetSection("ProgramOptions")
+                        );
+
+                        // Configure-DI
+                        services.AddOptions<ProgramOptions>().Configure<IHostEnvironment>((options, hostEnvironment) =>
+                        {
+                            options.Value003 = hostEnvironment.ApplicationName;
                         });
 
                         // IConfigureOptions
@@ -35,25 +50,10 @@ namespace OptionsLab
                         (
                             new ConfigureNamedOptions<ProgramOptions>(Options.DefaultName, (options) =>
                             {
-                                options.Value002 = "Config002";
+                                options.Value004 = "Config004";
                             })
                         );
-
-                        // IConfiguration
-                        services.Configure<ProgramOptions>
-                        (
-                            hostContext.Configuration.GetSection("ProgramOptions")
-                        );
-
-                        // AddOptions
-                        services.AddOptions<ProgramOptions>().Configure<IHostEnvironment>((options, hostEnvironment) =>
-                        {
-                            options.Value005 = hostEnvironment.ApplicationName;
-                        });
                     }
-
-                    // ProgramService
-                    services.AddHostedService<ProgramService>();
                 })
                 .ConfigureContainer<Autofac.ContainerBuilder>((container) =>
                 {
@@ -64,7 +64,7 @@ namespace OptionsLab
                         (
                             new ConfigureNamedOptions<ProgramOptions>(Options.DefaultName, (options) =>
                             {
-                                options.Value004 = "Config004";
+                                options.Value005 = "Config005";
                             })
                         );
                     }
