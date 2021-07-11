@@ -1,6 +1,22 @@
 # CLK.NetCoreLab
 
 
+## [.NET Core] Logger 程式範例 (NLog/Log4net)
+
+.NET Core裡內建了ILogger提供Log寫入功能。本篇範例程式展示如何使用內建的ILogger進行Log寫入，並展示如何在.NET Core裡掛載NLog/Log4net做為Log輸出實作。
+
+範例原碼：https://github.com/Clark159/CLK.NetCoreLab
+
+範例專案：
+  
+  1. LoggerLab：使用內建ILogger進行Log寫入，於Console內檢視Log紀錄。
+  
+  2. LoggerLab.NLog：掛載NLog做為Log輸出實作，於bin\Debug\net5.0\log資料夾內檢視Log紀錄檔案。
+  
+  3. LoggerLab.Log4net：掛載Log4net做為Log輸出實作，於bin\Debug\net5.0\log資料夾內檢視Log紀錄檔案。
+  
+
+
 ## [.NET Core] Quartz.Net 程式範例
 
 .NET Core裡可以使用Quartz.Net進行工作排程。本篇範例程式展示如何使用內建DI及外掛的Autofac進行排程作業掛載，也展示如何使用Cron expression設定每五秒一次的執行時間。除範例程式外，技術細節也推薦下列兩篇參考資料輔助學習。
@@ -16,7 +32,7 @@
   2. 了解Cron expression規則，以滿足各種排程執行時間需求，例如每月15號執行、每個星期三早上5點執行。 [Cron expression - 蚂蚁集团金融科技](https://tech.antfin.com/docs/10/64769)
 
 
-## [.NET Core] IOptions<T\> 程式範例
+## [.NET Core] IOptions<T> 程式範例
 
 在.NET Core中可以套用內建的Options Pattern，來進行強型別參數的設定+注入。除範例程式外，也推薦兩篇參考資料引導學習。
 

@@ -43,22 +43,18 @@ namespace LoggerLab.NLog
             // Fields
             private readonly ILogger _logger;
 
-            private readonly ILoggerFactory _loggerFactory = null;
-
 
             // Constructors
-            public ProgramService(ILogger<ProgramService> logger, ILoggerFactory loggerFactory)
+            public ProgramService(ILogger<ProgramService> logger)
             {
                 #region Contracts
 
                 if (logger == null) throw new ArgumentException(nameof(logger));
-                if (loggerFactory == null) throw new ArgumentException(nameof(loggerFactory));
 
                 #endregion
 
                 // Default
                 _logger = logger;
-                _loggerFactory = loggerFactory;
             }
 
 
@@ -72,7 +68,7 @@ namespace LoggerLab.NLog
                     _logger.LogTrace("Trace Message");
                     _logger.LogDebug("Debug Message");
                     _logger.LogInformation("Information Message");
-                    _logger.LogWarning("Information Message");
+                    _logger.LogWarning("Warning Message");
                     _logger.LogError("Error Message");
                     _logger.LogCritical("Critical Message");
                     Console.WriteLine("\n");
@@ -82,7 +78,7 @@ namespace LoggerLab.NLog
                     _logger.LogTrace(this.GetException("Trace Exception"), "Trace Message");
                     _logger.LogDebug(this.GetException("Debug Exception"), "Debug Message");
                     _logger.LogInformation(this.GetException("Information Exception"), "Information Message");
-                    _logger.LogWarning(this.GetException("Information Exception"), "Information Message");
+                    _logger.LogWarning(this.GetException("Warning Exception"), "Warning Message");
                     _logger.LogError(this.GetException("Error Exception"), "Error Message");
                     _logger.LogCritical(this.GetException("Critical Exception"), "Critical Message");
                     Console.WriteLine("\n");
