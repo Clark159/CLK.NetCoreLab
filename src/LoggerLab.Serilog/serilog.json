@@ -1,0 +1,15 @@
+{
+  "Serilog": {
+    "MinimumLevel": "Verbose",
+    "WriteTo": [
+      {
+        "Name": "File",
+        "Args": {
+          "path": ".\\log\\log-.log",
+          "rollingInterval": "Day",
+          "outputTemplate": "{Timestamp:yyyy-MM-dd HH:mm:ss.fff} [{ThreadId}] {Level} {SourceContext} - {Message}{NewLine}{Exception}"
+        }
+      }
+    ]
+  }
+}

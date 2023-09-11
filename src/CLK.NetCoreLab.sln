@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30804.86
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HostedServiceLab", "HostedServiceLab\HostedServiceLab.csproj", "{B5BE33EE-9256-48E1-90DE-0CE34CC0C67B}"
 EndProject
@@ -61,7 +61,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Options", "Options", "{931F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggerLab.NLog", "LoggerLab.NLog\LoggerLab.NLog.csproj", "{D9AEE19D-67FB-49BA-9344-6DB13CC8EDC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerLab.Log4net", "LoggerLab.Log4net\LoggerLab.Log4net.csproj", "{ADD9D687-51EB-41E7-8926-9C904BCD696E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggerLab.Log4net", "LoggerLab.Log4net\LoggerLab.Log4net.csproj", "{ADD9D687-51EB-41E7-8926-9C904BCD696E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerLab.Serilog", "LoggerLab.Serilog\LoggerLab.Serilog.csproj", "{79B3EADB-0392-4A6D-BBCF-328CAF3F1279}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -149,6 +151,10 @@ Global
 		{ADD9D687-51EB-41E7-8926-9C904BCD696E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADD9D687-51EB-41E7-8926-9C904BCD696E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADD9D687-51EB-41E7-8926-9C904BCD696E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79B3EADB-0392-4A6D-BBCF-328CAF3F1279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79B3EADB-0392-4A6D-BBCF-328CAF3F1279}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79B3EADB-0392-4A6D-BBCF-328CAF3F1279}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79B3EADB-0392-4A6D-BBCF-328CAF3F1279}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -181,6 +187,7 @@ Global
 		{931F63FF-9D08-461D-B63D-A0668BD7EBD5} = {1A9CEE07-8171-4B2F-BAA6-8D55505BC4EB}
 		{D9AEE19D-67FB-49BA-9344-6DB13CC8EDC1} = {2C9FEAEA-AF73-47D7-A1FC-FE9096FF9B33}
 		{ADD9D687-51EB-41E7-8926-9C904BCD696E} = {2C9FEAEA-AF73-47D7-A1FC-FE9096FF9B33}
+		{79B3EADB-0392-4A6D-BBCF-328CAF3F1279} = {2C9FEAEA-AF73-47D7-A1FC-FE9096FF9B33}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D258BC6B-DA7B-460C-A772-4E72B345F41B}

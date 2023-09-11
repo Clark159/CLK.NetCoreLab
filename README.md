@@ -1,9 +1,9 @@
 # CLK.NetCoreLab
 
 
-## [.NET Core] Logger 程式範例 (NLog/Log4net)
+## [.NET Core] Logger 程式範例 (NLog/Log4net/Serilog)
 
-.NET Core裡內建了ILogger提供Log寫入功能。本篇範例程式展示如何使用內建的ILogger進行Log寫入，並展示如何在.NET Core裡掛載NLog/Log4net做為Log輸出實作。
+.NET Core裡內建了ILogger提供Log寫入功能。本篇範例程式展示如何使用內建的ILogger進行Log寫入，並展示如何在.NET Core裡掛載NLog/Log4net/Serilog做為Log輸出實作。
 
 範例原碼：https://github.com/Clark159/CLK.NetCoreLab
 
@@ -14,6 +14,8 @@
   2. LoggerLab.NLog：掛載NLog做為Log輸出實作，於bin\Debug\net5.0\log資料夾內檢視Log紀錄檔案。
   
   3. LoggerLab.Log4net：掛載Log4net做為Log輸出實作，於bin\Debug\net5.0\log資料夾內檢視Log紀錄檔案。
+  
+  4. LoggerLab.Serilog：掛載Serilog做為Log輸出實作，於bin\Debug\net5.0\log資料夾內檢視Log紀錄檔案。
   
 
 
